@@ -1,0 +1,19 @@
+.naber-container {
+        padding-left:20px;
+        padding-right:20px;
+	height: 80px;
+	background-color: #1c2b35;
+	display: flex;
+        align-items: center;
+	justify-content: space-between;
+}
+.ancor-div a{
+        text-decoration: none;
+        margin: 12px;
+        font-weight: bold;
+        color: aliceblue;
+        
+}
+.ancor-div a:hover{
+ color: rgb(0, 127, 238);       
+}

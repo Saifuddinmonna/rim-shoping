@@ -1,0 +1,9 @@
+.fontdiv {
+	font-size: 16px;
+	font-style: italic;
+	text-transform: capitalize;
+	font-size: auto;
+	text-align: left;
+	color: blue;
+	text-transform: lowercase;
+}
