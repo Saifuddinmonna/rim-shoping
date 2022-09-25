@@ -1,12 +1,15 @@
 .products-main-div {
 	display: grid;
 	grid-template-columns: 4fr 1fr;
+	gap: 5px;
 }
-.fixposition{
-	position:fixed;
+.fixposition {
+	position: fixed;
+	padding-right: 6px;
+	margin-right: 16px;
 }
-.products-container{
- background-color:rgba(255, 153, 0, 0.3);
+.products-container {
+	background-color: rgba(255, 153, 0, 0.3);
 }
 .griddiv {
 	display: grid;
@@ -40,16 +43,16 @@
 	.orderfirst {
 		order: 0;
 	}
-	.fixposition{
-	position: relative;
-
-}
-	.selecteditem{
+	.fixposition {
+		position: relative;
+	}
+	.selecteditem {
 		position: fixed;
+
 		top: 15px;
 		left: 15px;
 		background-color: rgba(240, 248, 255, 0.336);
-		font-weight:bolder;
-		font-size:19px;
+		font-weight: bolder;
+		font-size: 19px;
 	}
 }

@@ -27,8 +27,8 @@ const Shop = () => {
 				))}
 			</div>
 
-			<div className="products-container border orderfirst mt-3 p-1 border rounded-3 shadow">
-				<div  className=" fixposition">
+			<div className="products-container border orderfirst m-1 p-1 border rounded-3 shadow">
+				<div  className=" fixposition p-2 text-start">
 					<h4>Total Products list {products.length}</h4>
 
 					<h5 className="text-primary text-decoration-underline">
