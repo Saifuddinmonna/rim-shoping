@@ -28,13 +28,13 @@ const Shop = () => {
 			</div>
 
 			<div className="products-container border orderfirst mt-3 p-1 border rounded-3 shadow">
-				<div  className="position-fixed">
+				<div  className=" fixposition">
 					<h4>Total Products list {products.length}</h4>
 
 					<h5 className="text-primary text-decoration-underline">
 						Order Summary{" "}
 					</h5>
-					<p className="fw-bolder"> Selected Items : {cart.length}</p>
+					<p className="fw-bolder selecteditem"> Selected Items : {cart.length}</p>
 					{cart.map((singlecart) => (
 						<ul>
 							<Singlecart
