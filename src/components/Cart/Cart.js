@@ -32,7 +32,8 @@ const Cart = ({ cart }) => {
 				Selected Items : {quantity}
 			</p>
 			{cart.map((product) => (
-				<Name name={product.name}></Name>
+				<Name name={ product.name }
+				quantity={product.quantity}></Name>
 			))}
 		</div>
 	);
