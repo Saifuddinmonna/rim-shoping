@@ -2,6 +2,7 @@ import { parse } from "@fortawesome/fontawesome-svg-core";
 import React from "react";
 import "./Cart.css";
 import Name from "../Name/Name";
+import { deleteShoppingCart } from "../../utilities/fakedb";
 
 const Cart = ({ cart }) => {
 	console.log("cart", cart);
@@ -29,12 +30,17 @@ const Cart = ({ cart }) => {
 			<p>Grand Total: $ {grandtotal}</p>
 			<p className="fw-bolder selecteditem">
 				{" "}
-				Selected Items : {quantity}
+				Selected Items : {quantity}{" "}
 			</p>
 			{cart.map((product) => (
-				<Name name={ product.name }
-				quantity={product.quantity}></Name>
+				<Name name={product.name} quantity={product.quantity}></Name>
 			))}
+			<button
+				className="btn btn-outline-primary w-100"
+				onClick={deleteShoppingCart}>
+				{" "}
+				Removes items from localStorage
+			</button>
 		</div>
 	);
 };
