@@ -35,7 +35,7 @@
 @media only screen and (max-width: 768px) {
 	.griddiv {
 		display: grid;
-		grid-template-columns: 170px 170px 170px;
+		grid-template-columns: 140px 140px 140px;
 		gap: 5px;
 		font-size: 1rem;
 		order: 2;
@@ -66,17 +66,18 @@
 		margin-left: ;
 	}
 	.product-headline {
-		font-size: 12px;
+		font-size: 14px;
 		text-transform: uppercase;
+		color: rgb(38, 0, 255);
 	}
-	.fixposition{
+	.fixposition {
 		margin-left: 20px;
 	}
 }
 @media only screen and (max-width: 668px) {
 	.griddiv {
 		display: grid;
-		grid-template-columns: 150px 150px 150px;
+		grid-template-columns: 130px 130px 130px;
 		gap: 5px;
 		font-size: 1rem;
 		order: 2;
@@ -110,7 +111,8 @@
 		font-size: 12px;
 		text-transform: uppercase;
 	}
-	.fixposition{
+	.fixposition {
 		margin-left: 20px;
+		color: rgb(38, 0, 255);
 	}
 }
