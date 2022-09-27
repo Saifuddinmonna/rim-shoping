@@ -3,23 +3,20 @@ import React from "react";
 import "./Cart.css";
 import Name from "../Name/Name";
 
-const Cart = ({cart}) => {
-	
+const Cart = ({ cart }) => {
+	console.log("cart", cart);
 	let total = 0;
 	let shiping = 0;
-	
+	let quantity = 0;
 	for (const product of cart) {
-		total = total +product.price;
-		shiping = shiping + product.shipping;
-
-		
-		
-		
+		quantity = quantity + product.quantity;
+		total = total + product.price * product.quantity;
+		shiping = shiping + product.shipping * product.quantity;
 	}
-		
-	const Tax=(total*.1).toFixed(2)
+
+	const Tax = total * 0.1 * quantity.toFixed(2);
 	const grandtotal = total + shiping + parseInt(Tax);
-	console.log(typeof grandtotal)
+	console.log(typeof grandtotal);
 	return (
 		<div className=" fixposition p-2 text-start ">
 			<h5 className="text-primary text-decoration-underline">
@@ -32,12 +29,10 @@ const Cart = ({cart}) => {
 			<p>Grand Total: $ {grandtotal}</p>
 			<p className="fw-bolder selecteditem">
 				{" "}
-				Selected Items : {cart.length}
+				Selected Items : {quantity}
 			</p>
 			{cart.map((product) => (
-				
-					<Name name={product.name}></Name>
-				
+				<Name name={product.name}></Name>
 			))}
 		</div>
 	);
