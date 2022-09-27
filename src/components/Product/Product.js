@@ -3,7 +3,7 @@ import "./Product.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 const Product = (props) => {
-	const { handleAddtoCart } = props;
+	const { product,handleAddtoCart } = props;
 	const {
 		id,
 		category,
@@ -16,14 +16,14 @@ const Product = (props) => {
 		img,
 		shipping,
 		quantity,
-	} = props.product;
+	} = product;
 
 	return (
 		<div className=" border rounded-3 p-1 shadow d-flex flex-column justify-content-between text-start">
 			<img className="img-fluid rounded" src={img} alt="" />
 
 			<div>
-				<h5>{name}</h5>
+				<h5 className="product-headline">{name}</h5>
 				<h5>price : {price}</h5>
 			</div>
 
@@ -33,8 +33,8 @@ const Product = (props) => {
 			</div>
 			<div className="colorclass rounded-bottom para">
 				<button
-					onClick={() => handleAddtoCart(props)}
-					className="d-block m-auto btn btn-outline-warning colorclass px-5 text-center w-100 text-black-50">
+					onClick={() => handleAddtoCart(product)}
+					className=" d-block m-auto btn btn-outline-warning colorclass  text-center w-100 text-black-50">
 					Add to Cart{" "}
 					<FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
 				</button>

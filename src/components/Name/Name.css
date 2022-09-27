@@ -1,0 +1,10 @@
+.fontstyle {
+	font-size: small;
+	text-transform: lowercase;
+	line-height: 85%;
+	list-style-type: square;
+}
+.linespacing {
+	line-break: auto;
+	line-clamp: 50%;
+}
