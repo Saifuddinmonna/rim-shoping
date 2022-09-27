@@ -69,4 +69,48 @@
 		font-size: 12px;
 		text-transform: uppercase;
 	}
+	.fixposition{
+		margin-left: 20px;
+	}
+}
+@media only screen and (max-width: 668px) {
+	.griddiv {
+		display: grid;
+		grid-template-columns: 150px 150px 150px;
+		gap: 5px;
+		font-size: 1rem;
+		order: 2;
+		align-content: center;
+		justify-content: center;
+	}
+	.products-main-div {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	.orderfirst {
+		order: 0;
+	}
+	.fixposition {
+		position: relative;
+	}
+	.selecteditem {
+		position: fixed;
+
+		top: 15px;
+		left: 15px;
+		background-color: rgba(240, 248, 255, 0.336);
+		font-weight: bolder;
+		font-size: 19px;
+	}
+	.linespacing {
+		padding-left: ;
+		margin-left: ;
+	}
+	.product-headline {
+		font-size: 12px;
+		text-transform: uppercase;
+	}
+	.fixposition{
+		margin-left: 20px;
+	}
 }
