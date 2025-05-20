@@ -1,20 +1,134 @@
-.header{
-    text-align: center;
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
-.logo{
-    height: 50px;
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
 }
-.header nav {
-    background-color: black;
-    line-height: 40px;
-}
-.header nav a{
+
+.logo a {
     text-decoration: none;
-    color: white;
-    margin-right: 20px;
-    padding: 5px;
-    font-size: 20px;
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
-.header nav a:hover{
-    background-color: lightgray;
+
+.nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav a:hover {
+    background-color: #f5f6fa;
+    color: #3498db;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 2px;
+    background-color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    bottom: -8px;
+}
+
+.hamburger.open {
+    background-color: transparent;
+}
+
+.hamburger.open::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.hamburger.open::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav a {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-content {
+        padding: 0.75rem 0;
+    }
+
+    .logo a {
+        font-size: 1.25rem;
+    }
 }

@@ -16,24 +16,26 @@ const Inventory = () => {
 
     // Calculate inventory statistics
     useEffect(() => {
-        if (products.length > 0) {
+        if (products && Array.isArray(products)) {
             const stats = {
                 totalProducts: products.length,
-                totalValue: products.reduce((sum, product) => sum + product.price, 0),
+                totalValue: products.reduce((sum, product) => sum + (product.price || 0), 0),
                 categoryCount: {},
                 lowStock: []
             };
 
             // Count products by category
             products.forEach(product => {
-                if (!stats.categoryCount[product.category]) {
-                    stats.categoryCount[product.category] = 0;
-                }
-                stats.categoryCount[product.category]++;
+                if (product && product.category) {
+                    if (!stats.categoryCount[product.category]) {
+                        stats.categoryCount[product.category] = 0;
+                    }
+                    stats.categoryCount[product.category]++;
 
-                // Check for low stock (assuming stock is a property, if not, you can remove this)
-                if (product.stock && product.stock < 5) {
-                    stats.lowStock.push(product);
+                    // Check for low stock
+                    if (product.stock && product.stock < 5) {
+                        stats.lowStock.push(product);
+                    }
                 }
             });
 
@@ -42,30 +44,42 @@ const Inventory = () => {
     }, [products]);
 
     // Filter and sort products
-    const filteredProducts = products
+    const filteredProducts = products && Array.isArray(products) ? products
         .filter(product => {
-            const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                product.category.toLowerCase().includes(searchTerm.toLowerCase());
+            if (!product) return false;
+            const matchesSearch = product.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                product.category?.toLowerCase().includes(searchTerm.toLowerCase());
             const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
             return matchesSearch && matchesCategory;
         })
         .sort((a, b) => {
+            if (!a || !b) return 0;
             switch (sortBy) {
                 case 'name':
-                    return a.name.localeCompare(b.name);
+                    return (a.name || '').localeCompare(b.name || '');
                 case 'price-asc':
-                    return a.price - b.price;
+                    return (a.price || 0) - (b.price || 0);
                 case 'price-desc':
-                    return b.price - a.price;
+                    return (b.price || 0) - (a.price || 0);
                 case 'category':
-                    return a.category.localeCompare(b.category);
+                    return (a.category || '').localeCompare(b.category || '');
                 default:
                     return 0;
             }
-        });
+        }) : [];
 
     // Get unique categories for filter
-    const categories = ['all', ...new Set(products.map(product => product.category))];
+    const categories = ['all', ...new Set((products || [])
+        .filter(product => product && product.category)
+        .map(product => product.category))];
+
+    if (!products) {
+        return (
+            <div className="inventory-container">
+                <div className="loading">Loading inventory...</div>
+            </div>
+        );
+    }
 
     return (
         <div className="inventory-container">
