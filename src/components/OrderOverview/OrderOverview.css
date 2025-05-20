@@ -1,0 +1,75 @@
+.order-overview-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.order-overview {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.order-overview h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.order-summary {
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.order-summary h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.order-summary p {
+    margin: 10px 0;
+    color: #34495e;
+}
+
+.order-summary h4 {
+    color: #e74c3c;
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.order-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-regular {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex: 1;
+    text-align: center;
+}
+
+.btn-regular:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    .order-actions {
+        flex-direction: column;
+    }
+    
+    .btn-regular {
+        width: 100%;
+    }
+} 
