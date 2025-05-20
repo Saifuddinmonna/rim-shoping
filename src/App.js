@@ -1,50 +1,40 @@
-import logo from "./logo.svg";
-import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './App.css';
+import Header from './components/Header/Header';
+import Inventory from './components/Inventory/Inventory';
+import NotFound from './components/NotFound/NotFound';
+import OrderReview from './components/OrderReview/OrderReview';
+import PlaceOrder from './components/PlaceOrder/PlaceOrder';
+import Shop from './components/Shop/Shop';
 
-import ConfirmModal from "../src/components/Name/t";
-import Main from "./Layout/Main";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Order from "./components/Orders/Order";
-import Inventory from "./components/Inventory/Inventory";
-import About from "./components/About/About";
-import Shop from "./components/Shop/Shop";
-import Cart from "./components/Cart/Cart";
 function App() {
-
-	const router = createBrowserRouter([
-		{
-			path: "/",
-			element: <Main />,
-			children: [
-				{
-					path: "/order",
-					
-					element: <Order></Order>,
-				},
-				{
-					path: "/shop",
-					loader: async ()=>fetch('products.json'),
-					element: <Shop></Shop>,
-				},
-				{
-					path: "/inventory",
-					element: <Inventory></Inventory>,
-				},
-				{
-					path: "/about",
-					element: <About></About>,
-				},
-			],
-		},
-	]);
-	
-	return (
-		<div className="App">
-
-			<RouterProvider router={router}></RouterProvider>
-			
-		</div>
-	);
+  return (
+    <div>
+      <Router>
+        <Header></Header>
+        <Switch>
+          <Route exact path="/">
+            <Shop></Shop>
+          </Route>
+          <Route path="/shop">
+            <Shop></Shop>
+          </Route>
+          <Route path="/review">
+            <OrderReview></OrderReview>
+          </Route>
+          <Route path="/inventory">
+            <Inventory></Inventory>
+          </Route>
+          <Route path="/placeorder">
+            <PlaceOrder></PlaceOrder>
+          </Route>
+          <Route path="*">
+            <NotFound></NotFound>
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

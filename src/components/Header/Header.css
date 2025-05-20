@@ -1,27 +1,20 @@
-.naber-container {
-        padding-left:20px;
-        padding-right:20px;
-	height: 80px;
-	background-color: #1c2b35;
-	display: flex;
-        align-items: center;
-	justify-content: space-between;
-        flex-wrap:wrap ;
-        flex-grow:2 ;
-        flex-shrink: 1;
-        min-width: 350px;
+.header{
+    text-align: center;
 }
-.ancor-div a{
-        text-decoration: none;
-        margin: 12px;
-        font-weight: bold;
-        color: aliceblue;
-        
+.logo{
+    height: 50px;
 }
-.ancor-div a:hover{
- color: rgb(0, 127, 238);       
+.header nav {
+    background-color: black;
+    line-height: 40px;
 }
-/* .active{
-  color: rgb(255, 0, 0);
-  font-weight: bolder;
-} */
+.header nav a{
+    text-decoration: none;
+    color: white;
+    margin-right: 20px;
+    padding: 5px;
+    font-size: 20px;
+}
+.header nav a:hover{
+    background-color: lightgray;
+}

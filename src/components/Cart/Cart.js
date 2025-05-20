@@ -1,48 +1,35 @@
-import { parse } from "@fortawesome/fontawesome-svg-core";
-import React from "react";
-import "./Cart.css";
-import Name from "../Name/Name";
-import { deleteShoppingCart } from "../../utilities/fakedb";
+import React from 'react';
+import './Cart.css';
 
-const Cart = ({ cart }) => {
-	console.log("cart", cart);
-	let total = 0;
-	let shiping = 0;
-	let quantity = 0;
-	for (const product of cart) {
-		quantity = quantity + product.quantity;
-		total = total + product.price * product.quantity;
-		shiping = shiping + product.shipping * product.quantity;
-	}
+const Cart = (props) => {
+    const { cart } = props;
+    // const totalReducer = (previous, product) => previous + product.price;
+    // const total = cart.reduce(totalReducer, 0);
+    let totalQuantity = 0;
+    let total = 0;
+    for (const product of cart) {
+        if (!product.quantity) {
+            product.quantity = 1;
+        }
+        total = total + product.price * product.quantity;
+        totalQuantity = totalQuantity + product.quantity;
+    }
 
-	const Tax = total * 0.1 * quantity.toFixed(2);
-	const grandtotal = total + shiping + parseInt(Tax);
-	console.log(typeof grandtotal);
-	return (
-		<div className=" fixposition p-2 text-start ">
-			<h5 className="text-primary text-decoration-underline">
-				Order Summary{" "}
-			</h5>
-
-			<p> Total price : $ {total}</p>
-			<p>Total Shipping Charge: $ {shiping}</p>
-			<p>Tax : $ {Tax}</p>
-			<p>Grand Total: $ {grandtotal}</p>
-			<p className="fw-bolder selecteditem">
-				{" "}
-				Selected Items : {quantity}{" "}
-			</p>
-			{cart.map((product) => (
-				<Name name={product.name} quantity={product.quantity}></Name>
-			))}
-			<button
-				className="btn btn-outline-primary w-100"
-				onClick={deleteShoppingCart}>
-				{" "}
-				Removes items from localStorage
-			</button>
-		</div>
-	);
+    const shipping = total > 0 ? 15 : 0;
+    const tax = (total + shipping) * 0.10;
+    const grandTotal = total + shipping + tax;
+    return (
+        <div>
+            <h3>Order Summary</h3>
+            <h5>Items Ordered: {totalQuantity}</h5>
+            <br />
+            <p>Total: {total.toFixed(2)}</p>
+            <p>Shipping: {shipping}</p>
+            <p>tax: {tax.toFixed(2)}</p>
+            <p>Grand Total: {grandTotal.toFixed(2)}</p>
+            {props.children}
+        </div>
+    );
 };
 
 export default Cart;

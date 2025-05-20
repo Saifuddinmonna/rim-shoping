@@ -1,46 +1,36 @@
-import React from "react";
-import "./Product.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import './Product.css';
+import Rating from 'react-rating';
+
 const Product = (props) => {
-	const { product,handleAddtoCart } = props;
-	const {
-		id,
-		category,
-		name,
-		seller,
-		price,
-		stock,
-		ratings,
-		ratingsCount,
-		img,
-		shipping,
-		quantity,
-	} = product;
+    // console.log(props);
+    const { name, img, seller, price, stock, star } = props.product;
 
-	return (
-		<div className=" border rounded-3 p-1 shadow d-flex flex-column justify-content-between text-start">
-			<img className="img-fluid rounded" src={img} alt="" />
-
-			<div>
-				<h5 className="product-headline">{name}</h5>
-				<h5>price : {price}</h5>
-			</div>
-
-			<div className="text-start para ">
-				<p className="fw-bolder text-primary">Manufacture : {seller}</p>
-				<p>Rating : {ratings}</p>
-			</div>
-			<div className="colorclass rounded-bottom para">
-				<button
-					onClick={() => handleAddtoCart(product)}
-					className=" d-block m-auto btn btn-outline-warning colorclass  text-center w-100 text-black-50">
-					Add to Cart{" "}
-					<FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
-				</button>
-			</div>
-		</div>
-	);
+    return (
+        <div className="product">
+            <img src={img} alt={name} />
+            <div>
+                <h4 className="product-name">{name}</h4>
+                <p className="seller-info">by: {seller}</p>
+                <p className="price">${price}</p>
+                <p className="stock-info">Only {stock} left in stock - order soon</p>
+                <Rating
+                    initialRating={star}
+                    emptySymbol="far fa-star icon-color"
+                    fullSymbol="fas fa-star icon-color"
+                    readonly
+                />
+                <button
+                    onClick={() => props.handleAddToCart(props.product)}
+                    className="btn-regular"
+                >
+                    <FontAwesomeIcon icon={faShoppingCart} /> Add to Cart
+                </button>
+            </div>
+        </div>
+    );
 };
 
 export default Product;
